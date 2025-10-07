@@ -1,0 +1,103 @@
+/* Vinoteca UI refinements */
+
+:root {
+  --page-max-width: 1080px;
+}
+
+/* Toolbar branding */
+ion-toolbar {
+  --background: linear-gradient(90deg, #ffffff, #faf7f2);
+  --color: var(--vinoteca-deep-red);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+ion-title {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.3px;
+  font-weight: 600;
+}
+
+/* Page content width and padding */
+ion-content::part(scroll) {
+  padding: 12px 16px;
+}
+
+@media (min-width: 992px) {
+  ion-content::part(scroll) {
+    display: grid;
+    place-content: start center;
+  }
+  ion-content > * {
+    max-width: var(--page-max-width);
+    width: 100%;
+  }
+}
+
+/* Cards and headings */
+ion-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+ion-card-subtitle {
+  color: rgba(255,255,255,0.75);
+}
+
+/* Links and accents */
+a {
+  color: var(--vinoteca-gold);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons & chips */
+ion-button, ion-chip {
+  border-radius: 10px;
+  transition: transform .15s ease, filter .2s ease;
+}
+
+ion-button:hover, ion-chip:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* Menu backdrop fade */
+ion-menu::part(backdrop) {
+  transition: opacity 260ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Active list item accent */
+ion-menu.md ion-item.selected {
+  border-left: 3px solid var(--ion-color-secondary);
+}
+
+/* Minimalist list & card polish */
+ion-list[inset] {
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+ion-card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  background: #ffffff;
+}
+
+ion-item {
+  --inner-padding-end: 12px;
+}
+
+/* Focus accessibility */
+@media (hover:hover) {
+  ion-item:focus-visible {
+    outline: 2px solid var(--ion-color-secondary);
+    outline-offset: 2px;
+  }
+}
+
+

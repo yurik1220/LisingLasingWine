@@ -1,5 +1,5 @@
 ion-menu ion-content {
-  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+  --background: linear-gradient(180deg, #ffffff 0%, #faf7f2 100%);
 }
 
 ion-menu.md ion-content {
@@ -22,13 +22,15 @@ ion-menu.md ion-list-header, ion-menu.md ion-note {
 }
 
 ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 ion-menu.md ion-list#inbox-list ion-list-header {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   min-height: 20px;
+  color: #e8d7a8;
+  font-family: 'Playfair Display', serif;
 }
 
 ion-menu.md ion-list#labels-list ion-list-header {
@@ -39,13 +41,15 @@ ion-menu.md ion-list#labels-list ion-list-header {
 }
 
 ion-menu.md ion-item {
-  --padding-start: 10px;
-  --padding-end: 10px;
-  border-radius: 4px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  border-radius: 8px;
+  transition: transform .18s ease, background-color .2s ease, color .2s ease;
 }
 
 ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+  --background: rgba(var(--ion-color-secondary-rgb), 0.14);
+  transform: translateX(2px);
 }
 
 ion-menu.md ion-item.selected ion-icon {
@@ -53,7 +57,7 @@ ion-menu.md ion-item.selected ion-icon {
 }
 
 ion-menu.md ion-item ion-icon {
-  color: #616e7e;
+  color: var(--vinoteca-deep-red);
 }
 
 ion-menu.md ion-item ion-label {
@@ -104,10 +108,28 @@ ion-menu.ios ion-note {
 
 ion-note {
   display: inline-block;
-  font-size: 16px;
-  color: var(--ion-color-medium-shade);
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
 }
 
 ion-item.selected {
-  --color: var(--ion-color-primary);
-} 
+  --color: var(--ion-color-secondary);
+}
+
+/* Hover effects */
+@media (hover:hover) {
+  ion-menu.md ion-item:hover {
+    --background: rgba(0,0,0,0.04);
+    transform: translateX(4px);
+  }
+}
+
+/* Menu reveal animation */
+ion-menu::part(container) {
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Backdrop tint a bit lighter so content remains visible */
+ion-menu::part(backdrop) {
+  background: rgba(0,0,0,0.35);
+}

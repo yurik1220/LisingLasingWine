@@ -3,7 +3,12 @@ import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/r
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
-import Page from './pages/Page';
+import BrowseWines from './pages/BrowseWines';
+import Cart from './pages/Cart';
+import Orders from './pages/Orders';
+import Profile from './pages/Profile';
+import About from './pages/About';
+import Developers from './pages/Developers';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -24,20 +29,35 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-setupIonicReact();
+setupIonicReact({ mode: 'ios' });
 
 const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
+        <IonSplitPane contentId="main" when="false">
           <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              <Redirect to="/page/Inbox" />
+              <Redirect to="/browse" />
             </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
+            <Route path="/browse" exact={true}>
+              <BrowseWines />
+            </Route>
+            <Route path="/cart" exact={true}>
+              <Cart />
+            </Route>
+            <Route path="/orders" exact={true}>
+              <Orders />
+            </Route>
+            <Route path="/profile" exact={true}>
+              <Profile />
+            </Route>
+            <Route path="/about" exact={true}>
+              <About />
+            </Route>
+            <Route path="/developers" exact={true}>
+              <Developers />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
